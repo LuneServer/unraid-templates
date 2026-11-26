@@ -8,7 +8,7 @@
   <Support>https://github.com/LuneServer/lune/issues</Support>
   <Project>https://github.com/LuneServer/lune</Project>
   <TemplateURL>https://raw.githubusercontent.com/LuneServer/unraid-templates/main/templates/lune.xml</TemplateURL>
-  <Overview>Lune — Your universe. Your media. Self-hosted media platform with integrated ACME HTTPS edge, built-in security, Direct Play, hardware-accelerated HLS streaming, and native Media Requests.</Overview>
+  <Overview>Your universe. Your media. Lune is a self-hosted media server with built-in HTTPS and security, so there's no separate reverse proxy to set up. Direct Play, hardware-accelerated streaming, multi-user accounts with 2FA, and built-in media requests.</Overview>
   <Category>MediaServer:Video MediaServer:Music</Category>
   <WebUI>http://[IP]:[PORT:5863]</WebUI>
   <Icon>https://raw.githubusercontent.com/LuneServer/lune-brand/main/png/lune-avatar-512.png</Icon>
