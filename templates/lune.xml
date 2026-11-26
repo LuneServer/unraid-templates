@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Lune</Name>
+  <Repository>ghcr.io/luneserver/lune:latest</Repository>
+  <Registry>https://github.com/LuneServer/lune/pkgs/container/lune</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/LuneServer/lune/issues</Support>
+  <Project>https://github.com/LuneServer/lune</Project>
+  <TemplateURL>https://raw.githubusercontent.com/LuneServer/unraid-templates/main/templates/lune.xml</TemplateURL>
+  <Overview>Lune — Your universe. Your media. Self-hosted media platform with integrated ACME HTTPS edge, built-in security, Direct Play, hardware-accelerated HLS streaming, and native Media Requests.</Overview>
+  <Category>MediaServer:Video MediaServer:Music</Category>
+  <WebUI>http://[IP]:[PORT:5863]</WebUI>
+  <Icon>https://raw.githubusercontent.com/LuneServer/lune-brand/main/png/lune-avatar-512.png</Icon>
+  <Shell>sh</Shell>
+  <Config Name="Web HTTP Port" Target="5863" Default="5863" Mode="tcp" Description="HTTP port used for local, reverse proxy, or Tailscale modes" Type="Port" Display="always" Required="false" Mask="false">5863</Config>
+  <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/lune" Mode="rw" Description="Persistent SQLite database, TLS certs, cached artwork, and transcode scratch" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lune</Config>
+  <Config Name="Media Library" Target="/media" Default="/mnt/user/media" Mode="ro" Description="Read-only mount for your media directories" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/media</Config>
+  <Config Name="Access / Edge Mode" Target="LUNE_EDGE_MODE" Default="local" Description="Choose how Lune is accessed: 'local' (LAN HTTP :5863), 'acme' (built-in Let's Encrypt HTTPS :443/:80), 'proxy' (behind NPM/SWAG/Traefik/Caddy :5863), or 'tailscale' (Tailscale Serve / Unraid Tailscale :5863)" Type="Variable" Display="always" Required="true" Mask="false">local</Config>
+  <Config Name="Public URL" Target="LUNE_PUBLIC_URL" Default="" Description="Optional canonical external URL (e.g. https://lune.example.com or https://lune.tailnet.ts.net) for Secure cookies and invite links" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID for file ownership in /data (Unraid default: 99 / nobody)" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID for file ownership in /data (Unraid default: 100 / users)" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="002" Description="File creation mask (default: 002)" Type="Variable" Display="advanced" Required="false" Mask="false">002</Config>
+  <Config Name="HTTPS Port (ACME)" Target="443" Default="" Mode="tcp" Description="Optional embedded HTTPS port for LUNE_EDGE_MODE=acme (Unraid WebGUI uses host 443; use a custom br0 IP or map to a free host port)" Type="Port" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="HTTP Redirect / ACME Port" Target="80" Default="" Mode="tcp" Description="Optional HTTP-01 challenge and redirect port for LUNE_EDGE_MODE=acme (Unraid WebGUI uses host 80; leave blank when using Cloudflare DNS-01)" Type="Port" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Domain" Target="LUNE_DOMAIN" Default="" Description="Public domain name for automatic TLS certificate issuance (required when Edge Mode is 'acme')" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ACME Email" Target="LUNE_ACME_EMAIL" Default="" Description="Contact email for Let's Encrypt notifications (optional, for 'acme' mode)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Trusted Reverse Proxies" Target="LUNE_TRUSTED_PROXIES" Default="" Description="Optional comma-separated reverse proxy IPs/CIDRs allowed to supply X-Forwarded-For (e.g. 172.17.0.0/16)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ACME DNS Provider" Target="LUNE_ACME_DNS_PROVIDER" Default="" Description="Optional DNS-01 solver (set to 'cloudflare' to validate without port 80)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Cloudflare API Token" Target="LUNE_CF_API_TOKEN" Default="" Description="Scoped Zone:DNS:Edit token when using Cloudflare DNS-01" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="TMDB API Key Override" Target="LUNE_TMDB_API_KEY" Default="" Description="Optional personal TMDB v3 API key override (leave blank to use the built-in default)" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="TMDB Proxy URL" Target="LUNE_TMDB_BASE_URL" Default="" Description="Optional custom TMDB proxy or base URL" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Hardware Transcoding GPU" Target="/dev/dri" Default="" Description="Optional Intel QuickSync / AMD VAAPI device passthrough (enter /dev/dri if your server has a supported GPU)" Type="Device" Display="advanced" Required="false" Mask="false"/>
+</Container>
