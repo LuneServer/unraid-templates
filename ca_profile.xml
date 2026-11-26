@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
   <Profile>
-    Official Unraid Community Applications templates for Lune — a self-hosted media platform with integrated ACME HTTPS, Direct Play, hardware-accelerated HLS streaming, and native Media Requests.
+    Official Unraid templates for Lune. Your universe. Your media. A self-hosted media server with built-in HTTPS and security, so there's no separate reverse proxy to set up. Direct Play, hardware-accelerated streaming, multi-user accounts with 2FA, and built-in media requests.
   </Profile>
   <Icon>https://raw.githubusercontent.com/LuneServer/lune-brand/main/png/lune-avatar-512.png</Icon>
   <WebPage>https://github.com/LuneServer/lune</WebPage>
